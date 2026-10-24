@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Saish Technologies, Kopargaon: laptop and desktop sales, RAM and SSD upgrades, and laptop repairs at two branches.">
+<title>Saish Technologies Kopargaon</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a laptop spec sheet. Wordmark hero with a live "spec card", service grid like a parts list, two branch cards with hours tables. */
+:root{
+  --bg:#f3f5f7; --surface:#ffffff; --line:#d5dbe2; --ink:#14202b; --muted:#566473;
+  --accent:#0b62d6; --accent-ink:#ffffff; --signal:#14a36b;
+  --display:"Chakra Petch","Segoe UI",system-ui,sans-serif;
+  --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0d1319; --surface:#141c24; --line:#26323e; --ink:#e6edf3; --muted:#93a1b0;
+  --accent:#4c9bff; --accent-ink:#06121f; --signal:#35c98d; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d1319; --surface:#141c24; --line:#26323e; --ink:#e6edf3; --muted:#93a1b0;
+  --accent:#4c9bff; --accent-ink:#06121f; --signal:#35c98d; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1100px;margin:0 auto}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+header.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px;border-bottom:1px solid var(--line)}
+.mark{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.mark .chip{width:34px;height:34px;border:2px solid var(--accent);border-radius:6px;display:grid;place-items:center;font-family:var(--display);font-weight:700;color:var(--accent);font-size:18px}
+.mark span{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:.02em;line-height:1}
+.mark small{display:block;font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.08em;margin-top:3px}
+nav{display:flex;gap:20px;font-size:15px}
+nav a{color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--ink)}
+
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding-block:60px 64px}
+.hero > div{min-width:0}
+.tag{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:.06em;margin:0 0 14px;display:flex;align-items:center;gap:8px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--signal)}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(40px,6.4vw,68px);line-height:1.02;margin:0;letter-spacing:-.01em;text-wrap:balance}
+h1 em{font-style:normal;color:var(--accent)}
+.lede{color:var(--muted);font-size:18px;max-width:50ch;margin:20px 0 28px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.btn{font-family:var(--display);font-weight:600;font-size:16px;letter-spacing:.03em;padding:11px 20px;border-radius:6px;text-decoration:none;border:1.5px solid var(--accent)}
+.btn.solid{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{color:var(--accent)}
+.btn:hover{filter:brightness(1.08)}
+
+.spec{background:var(--surface);border:1px solid var(--line);border-radius:10px;font-family:var(--mono);font-size:14px;overflow:hidden}
+.spec .head{display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--line);color:var(--muted);font-size:12px;letter-spacing:.08em}
+.spec dl{margin:0;padding:6px 16px 10px}
+.spec .row{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.spec .row:last-child{border-bottom:0}
+.spec dt{color:var(--muted)}
+.spec dd{margin:0;text-align:right;color:var(--ink)}
+.spec dd.ok{color:var(--signal)}
+
+section{padding-block:56px;border-top:1px solid var(--line)}
+.eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(30px,4.4vw,42px);line-height:1.1;margin:0 0 28px;text-wrap:balance}
+
+.parts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.part{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px;display:grid;gap:8px;align-content:start;min-width:0}
+.part .code{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em}
+.part h3{font-family:var(--display);font-weight:600;font-size:21px;margin:0;line-height:1.2}
+.part p{margin:0;color:var(--muted);font-size:15px}
+.part ul{margin:4px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.part li{font-family:var(--mono);font-size:12px;border:1px solid var(--line);border-radius:4px;padding:2px 8px;color:var(--ink)}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+.steps div{min-width:0;border-top:2px solid var(--accent);padding-top:14px}
+.steps b{font-family:var(--mono);font-size:13px;color:var(--accent);display:block;margin-bottom:4px}
+.steps h3{font-family:var(--display);font-weight:600;font-size:19px;margin:0 0 4px}
+.steps p{margin:0;color:var(--muted);font-size:15px}
+
+.branches{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.branch{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px;display:grid;gap:14px;align-content:start;min-width:0}
+.branch .label{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--muted)}
+.branch h3{font-family:var(--display);font-weight:600;font-size:24px;margin:0;line-height:1.15}
+.branch address{font-style:normal;color:var(--muted)}
+.hours{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:13.5px;font-variant-numeric:tabular-nums}
+.hours td{padding:6px 0;border-bottom:1px dashed var(--line)}
+.hours td:last-child{text-align:right}
+.hours tr.today td{color:var(--accent);font-weight:500}
+.phone{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.phone .n{font-family:var(--mono);font-size:18px;user-select:all;font-variant-numeric:tabular-nums}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+.mini{font-family:var(--body);font-size:14px;font-weight:600;padding:6px 12px;border-radius:5px;border:1px solid var(--accent);background:transparent;color:var(--accent);text-decoration:none;cursor:pointer}
+.mini.fill{background:var(--accent);color:var(--accent-ink)}
+
+footer{border-top:1px solid var(--line);padding-block:24px 32px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+footer .m{font-family:var(--mono);font-size:12px}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;gap:32px;padding-block:40px 48px}
+  .parts{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .branches{grid-template-columns:1fr}
+  nav{display:none}
+}
+@media (max-width:520px){.parts,.steps{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="bar">
+    <a class="mark" href="#top"><span class="chip">S</span><span>Saish Technologies<small>LAPTOPS · COMPUTERS · KOPARGAON</small></span></a>
+    <nav><a href="#services">Services</a><a href="#repair">Repairs</a><a href="#visit">Branches</a></nav>
+  </header>
+
+  <div class="hero" id="top">
+    <div>
+      <p class="tag"><span class="dot"></span><span id="openNow">Open every day, 8:30 AM to 9:30 PM</span></p>
+      <h1>Laptops, computers and <em>repairs</em> in Kopargaon</h1>
+      <p class="lede">Buy a new laptop or desktop, upgrade the one you have, or get it repaired. Two branches in Kopargaon, open from early morning until late evening.</p>
+      <div class="ctas">
+        <a class="btn solid" href="https://wa.me/917218342583?text=Hi%20Saish%20Technologies%2C%20I%20need%20help%20with" target="_blank" rel="noopener">WhatsApp us</a>
+        <a class="btn ghost" href="#visit">Find a branch</a>
+      </div>
+    </div>
+    <div class="spec" aria-label="Shop at a glance">
+      <div class="head"><span>SAISH TECHNOLOGIES</span><span>SPEC SHEET</span></div>
+      <dl>
+        <div class="row"><dt>Sales</dt><dd>Laptops · Desktops</dd></div>
+        <div class="row"><dt>Upgrades</dt><dd>RAM · SSD · Battery</dd></div>
+        <div class="row"><dt>Repairs</dt><dd>Screen · Keyboard · Board</dd></div>
+        <div class="row"><dt>Branches</dt><dd>2 in Kopargaon</dd></div>
+        <div class="row"><dt>Google rating</dt><dd>4.2 ★ (50 reviews)</dd></div>
+        <div class="row"><dt>Status</dt><dd class="ok" id="specStatus">Open daily</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <section id="services">
+    <p class="eyebrow">What we do</p>
+    <h2>Everything for your laptop and PC</h2>
+    <div class="parts">
+      <div class="part"><span class="code">SALES</span><h3>New laptops</h3><p>Student, office and gaming laptops from leading brands, with help picking the right configuration.</p><ul><li>Student</li><li>Office</li><li>Gaming</li></ul></div>
+      <div class="part"><span class="code">SALES</span><h3>Desktops &amp; custom PCs</h3><p>Ready-made desktops or a PC assembled to your budget for home, office or design work.</p><ul><li>Assembled PCs</li><li>All-in-one</li></ul></div>
+      <div class="part"><span class="code">UPGRADE</span><h3>RAM &amp; SSD upgrades</h3><p>Make an older laptop fast again with more memory or a solid-state drive.</p><ul><li>RAM</li><li>SSD</li><li>OS install</li></ul></div>
+      <div class="part"><span class="code">REPAIR</span><h3>Screen &amp; display</h3><p>Cracked screens, flickering displays and broken hinges, diagnosed before we replace anything.</p><ul><li>Display</li><li>Hinge</li></ul></div>
+      <div class="part"><span class="code">REPAIR</span><h3>Keyboard, battery &amp; charging</h3><p>Dead keys, batteries that won't hold charge and charging-port faults.</p><ul><li>Keyboard</li><li>Battery</li><li>Adapter</li></ul></div>
+      <div class="part"><span class="code">ACCESSORIES</span><h3>Computer accessories</h3><p>Mice, keyboards, chargers, pen drives, bags and other everyday hardware.</p><ul><li>Peripherals</li><li>Storage</li></ul></div>
+    </div>
+  </section>
+
+  <section id="repair">
+    <p class="eyebrow">Repair process</p>
+    <h2>How a repair works</h2>
+    <div class="steps">
+      <div><b>STEP 1</b><h3>Bring it in</h3><p>Visit either branch and tell us what's going wrong.</p></div>
+      <div><b>STEP 2</b><h3>Diagnosis</h3><p>We check the laptop and find the actual fault.</p></div>
+      <div><b>STEP 3</b><h3>Quote first</h3><p>You get the price before any part is replaced.</p></div>
+      <div><b>STEP 4</b><h3>Test &amp; hand over</h3><p>We test it with you at the counter before you take it home.</p></div>
+    </div>
+  </section>
+
+  <section id="visit">
+    <p class="eyebrow">Visit us</p>
+    <h2>Two branches in Kopargaon</h2>
+    <div class="branches">
+      <div class="branch">
+        <span class="label">BRANCH 1 · MAIN SHOP</span>
+        <h3>GKDS Complex, Station Road</h3>
+        <address>Shop No. 14, GKDS Complex, Station Road, near Sanjivani Sugar Factory, Singnapur, Kopargaon, Maharashtra 423603</address>
+        <table class="hours" data-hours="b1"><tbody>
+          <tr data-d="1"><td>Monday</td><td>8:30 AM – 9:30 PM</td></tr>
+          <tr data-d="2"><td>Tuesday</td><td>8:30 AM – 9:30 PM</td></tr>
+          <tr data-d="3"><td>Wednesday</td><td>8:30 AM – 9:30 PM</td></tr>
+          <tr data-d="4"><td>Thursday</td><td>8:30 AM – 9:30 PM</td></tr>
+          <tr data-d="5"><td>Friday</td><td>8:30 AM – 9:30 PM</td></tr>
+          <tr data-d="6"><td>Saturday</td><td>8:30 AM – 9:30 PM</td></tr>
+          <tr data-d="0"><td>Sunday</td><td>8:30 AM – 9:30 PM</td></tr>
+        </tbody></table>
+        <div class="acts"><a class="mini" href="https://www.google.com/maps/search/?api=1&query=Saish+Technologies&query_place_id=ChIJyTSgMXRE3DsRqPymFK4ve2I" target="_blank" rel="noopener">Directions</a></div>
+      </div>
+      <div class="branch">
+        <span class="label">BRANCH 2 · BAZAAR</span>
+        <h3>Premraj Kale Tower, Bazaar</h3>
+        <address>Premraj Kale Tower, near Anil Cold Drinks, opp. Vyapari Dharamshala, Kale Mala, Kopargaon, Maharashtra 423601</address>
+        <table class="hours" data-hours="b2"><tbody>
+          <tr data-d="1"><td>Monday</td><td>8:00 AM – 9:00 PM</td></tr>
+          <tr data-d="2"><td>Tuesday</td><td>8:00 AM – 9:00 PM</td></tr>
+          <tr data-d="3"><td>Wednesday</td><td>8:00 AM – 9:00 PM</td></tr>
+          <tr data-d="4"><td>Thursday</td><td>8:00 AM – 9:00 PM</td></tr>
+          <tr data-d="5"><td>Friday</td><td>8:00 AM – 9:00 PM</td></tr>
+          <tr data-d="6"><td>Saturday</td><td>9:30 AM – 2:00 PM</td></tr>
+          <tr data-d="0"><td>Sunday</td><td>8:00 AM – 9:30 PM</td></tr>
+        </tbody></table>
+        <div class="phone"><span class="n">+91 72183 42583</span><span class="acts">
+          <a class="mini fill" href="https://wa.me/917218342583" target="_blank" rel="noopener">WhatsApp</a>
+          <button class="mini" type="button" id="copyPhone" data-n="+917218342583">Copy</button></span></div>
+        <div class="acts"><a class="mini" href="https://www.google.com/maps/search/?api=1&query=Saish+Technologies+Branch+No.2&query_place_id=ChIJ4XqPtEJF3DsRzwJnXNGmP4Y" target="_blank" rel="noopener">Directions</a></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Saish Technologies, Kopargaon</span>
+    <span class="m">LAPTOPS · DESKTOPS · UPGRADES · REPAIRS</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  // Highlight today's row using India time
+  var now=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Kolkata'}));
+  var d=now.getDay(), m=now.getHours()*60+now.getMinutes();
+  document.querySelectorAll('.hours tr[data-d="'+d+'"]').forEach(function(r){r.className='today'});
+  var open=m>=510&&m<1290;
+  var t=document.getElementById('openNow'), s=document.getElementById('specStatus');
+  if(open){t.textContent='Open now · main shop until 9:30 PM';s.textContent='Open now';}
+  else{t.textContent='Closed now · main shop opens 8:30 AM';s.textContent='Opens 8:30 AM';s.className='';}
+  var b=document.getElementById('copyPhone');
+  b.addEventListener('click',function(){
+    var done=function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)};
+    var sel=function(){var r=document.createRange();r.selectNodeContents(b.closest('.phone').querySelector('.n'));var g=getSelection();g.removeAllRanges();g.addRange(r)};
+    try{navigator.clipboard.writeText(b.getAttribute('data-n')).then(done,sel)}catch(e){sel()}
+  });
+})();
+</script>
+</body>
+</html>
